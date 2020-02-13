@@ -2,11 +2,19 @@
 {
     // Start is called before the first frame update
     // This all happens once at the beginning of the run
-    void Start()
-    {
+
+
+        //Moving these variables to GLOBAL SCOPE (just like JS) so they can be accessed
+        //in our void UPDATE to take users guess
+        
         //Setting our min and max as variables
         int max = 1000;
         int min = 1;
+        //Creating new variable as the player's "guess" (hardcoded for now)
+        int guess = 500;
+    
+    void Start()
+    {
 
         //Printing to the console with our variables
         Debug.Log("Welcome to Number Wizard!");
@@ -26,10 +34,17 @@
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Debug.Log("Up Arrow key was pressed.");
+            //Now these variables work, and we can Debug.Log our guess (hard coded for now)
+            //out to the console
+            min = guess;
+            Debug.Log(guess)
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Debug.Log("Down Arrow key was pressed.");
+            //Same as min, but using max to check other potential input (up or down)
+            max = guess;
+            Debug.Log(guess)
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
