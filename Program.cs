@@ -8,10 +8,10 @@
         //in our void UPDATE to take users guess
         
         //Setting our min and max as variables
-        int max = 1000;
-        int min = 1;
+        int max
+        int min
         //Creating new variable as the player's "guess" (hardcoded for now)
-        int guess = 500;
+        int guess
     
     //Previous mistake. void Start STILL needs to exist.
     void Start()
@@ -26,6 +26,14 @@
     //This function so far takes in no parameters as of yet but it CAN like in JS
     void StartGame()
     {
+        //Added these values here so when we restart the game now, it starts it at
+        //1000 and NOT 1001 (from recalling start game). Notice that max, min, and guess
+        //are still instantiated starting up on line 11, but just to tell C# what TYPE of
+        //data they are (int = integer = number value) and they are now set here :)
+        max = 1000;
+        min = 1;
+        guess = 500;
+
         Debug.Log("Welcome to Number Wizard!");
         Debug.Log("Pick a number!");
         Debug.Log("The highest number you can pick is: " + max);
@@ -58,6 +66,8 @@
         else if (Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log("I CAN READ YOUR MINDDDDDD");
+            //Can restart game
+            StartGame();
         }
     }
     
