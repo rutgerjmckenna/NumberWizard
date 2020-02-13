@@ -23,6 +23,15 @@
         Debug.Log("The lowest number you can pick is: " + min);
         Debug.Log("Tell me if your number is higher or lower than 500");
         Debug.Log("Push Up = Higher, Push Down = Lower, Push Enter = Correct");
+        //Assigning a variable (like on line 41 for example) as itself. This then makes the max
+        //ACTUALLY 1001!
+        max = max + 1;
+        //This solution WORKS. Reason being --> this is in our void START, allowing C#
+        //to instantiate this program with max actually equaling 1001 AFTER it does a 
+        //top down run from lines 20-25, where it interpolated the max value (1000) as it was
+        //originally instantiated on line 11.
+        //As C# is a top down reading language, and it runs its void Start FIRST, now
+        //we have the ability to use the 1001 value in our void Update. Victory!
     }
 
     // Update is called once per frame
@@ -57,5 +66,3 @@
         }
     }
 }
-
-//NOTE at this point there is a bug were you cannot guess 1000 as it only lets you go to 999
