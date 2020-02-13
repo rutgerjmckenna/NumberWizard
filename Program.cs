@@ -37,6 +37,9 @@
             //Now these variables work, and we can Debug.Log our guess (hard coded for now)
             //out to the console
             min = guess;
+            //Saying our guess is the maximum and the minimum divided by 2 (this would
+            //round down for the number) for example 1000 + 1 / 2 = 500 for us
+            guess = (max + min) / 2;
             Debug.Log(guess)
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -44,6 +47,8 @@
             Debug.Log("Down Arrow key was pressed.");
             //Same as min, but using max to check other potential input (up or down)
             max = guess;
+            //Same as in the if statement to calculate the guess
+            guess = (max + min) / 2;
             Debug.Log(guess)
         }
         else if (Input.GetKeyDown(KeyCode.Return))
@@ -52,3 +57,5 @@
         }
     }
 }
+
+//NOTE at this point there is a bug were you cannot guess 1000 as it only lets you go to 999
