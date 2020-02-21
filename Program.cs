@@ -42,22 +42,11 @@ public class NumberWizard : MonoBehaviour
     void StartGame()
     {
 
-        //Now since our serialized int max and min are going to be dynamic (lines 14 and 15),
-        //we can actually put our guess value here in the void StartGame()
-        //so we have a value to compare to as the game starts! And it is no
-        //longer hard coded.
-        guess = (max + min) / 2;
+        // Now that next guess is creating the same code, in startgame we can
+        //have it simply call next guess for a clean refactor
 
-        //These values are set in our inspector in the Unity Engine.
-
-        //In our text field, it is looking to display a string, so now we have to
-        //convert the guessText to a string so it can display on the GAME START
-        guessText.text = guess.ToString();
-        
-        //We keep our max = max + 1 to stay away from the bug we found last time,
-        //but now we are going to take out our hard coded values so we can actually
-        //use Unity and player input with the public voids to get our range.
-        max = max + 1;
+        NextGuess();
+        // that max = max + 1 is now redundant and can be deleted!
     }
 
 
@@ -67,13 +56,15 @@ public class NumberWizard : MonoBehaviour
     //be altered.
     public void OnPressHigher()
     {
-        min = guess;
+        min = guess + 1;
         NextGuess();
     }
-
+    //Adding the plus one to min and minus one to max allows us to then
+    //have a window that doesn't include the previous number when narrowing
+    //down the guesses
     public void OnPressLower()
     {
-        max = guess;
+        max = guess - 1;
         NextGuess();
     }
 
@@ -82,7 +73,9 @@ public class NumberWizard : MonoBehaviour
 
     void NextGuess()
     {
-        guess = (max + min) / 2;
+        //Now we get a random value between min and max!
+        guess = Random.Range(min, max + 1);
+        guessText.text = guess.ToString();
     }
 
 }
