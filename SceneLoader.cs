@@ -15,4 +15,11 @@ public class SceneLoader : MonoBehaviour {
     {
         SceneManager.LoadScene(0);
     }
+
+    //We can now quit the game with the button in unity which calls the
+    //quit method on the application
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
