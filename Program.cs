@@ -8,8 +8,11 @@
         //in our void UPDATE to take users guess
         
         //Setting our min and max as variables
-        int max
-        int min
+
+        //Serializing the field here allows for gamplay input for different amounts
+        //to be guessed. No longer requires the hard coding.
+        [SerializeField] int max
+        [SerializeField] int min
         //Creating new variable as the player's "guess" (hardcoded for now)
         int guess
     
@@ -34,12 +37,6 @@
         min = 1;
         guess = 500;
 
-        Debug.Log("Welcome to Number Wizard!");
-        Debug.Log("Pick a number!");
-        Debug.Log("The highest number you can pick is: " + max);
-        Debug.Log("The lowest number you can pick is: " + min);
-        Debug.Log("Tell me if your number is higher or lower than " + guess);
-        Debug.Log("Push Up = Higher, Push Down = Lower, Push Enter = Correct");
         max = max + 1;
     }
 
@@ -65,7 +62,6 @@
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log("I CAN READ YOUR MINDDDDDD");
             //Can restart game
             StartGame();
         }
