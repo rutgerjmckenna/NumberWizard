@@ -29,23 +29,25 @@
     //This function so far takes in no parameters as of yet but it CAN like in JS
     void StartGame()
     {
-        //Added these values here so when we restart the game now, it starts it at
-        //1000 and NOT 1001 (from recalling start game). Notice that max, min, and guess
-        //are still instantiated starting up on line 11, but just to tell C# what TYPE of
-        //data they are (int = integer = number value) and they are now set here :)
-        max = 1000;
-        min = 1;
-        guess = 500;
-
+        //We keep our max = max + 1 to stay away from the bug we found last time,
+        //but now we are going to take out our hard coded values so we can actually
+        //use Unity and player input with the public voids to get our range.
         max = max + 1;
+
+        //Now since our serialized int max and min are going to be dynamic (lines 14 and 15),
+        //we can actually put our guess value here in the void StartGame()
+        //so we have a value to compare to as the game starts! And it is no
+        //longer hard coded.
+        guess = (max + min) / 2;
+
+        //These values are set in our inspector in the Unity Engine.
     }
 
 
     //We took out our UPDATE void. The reason for this is because we are now
     //working with our scene loader. This allows the player input to be
     //used with the Unity Engine publicly, and therefore the game play can
-    //be altered. After we commit this we will change our hard coded values above
-    //as the public void allows us to enter the numeric amounts on Unity.
+    //be altered.
     public void OnPressHigher()
     {
         min = guess;
@@ -64,7 +66,6 @@
     void NextGuess()
     {
         guess = (max + min) / 2;
-        Debug.Log("Is it higher or lower than " + guess + "?");
     }
 
 }
