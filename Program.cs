@@ -40,32 +40,24 @@
         max = max + 1;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    //We took out our UPDATE void. The reason for this is because we are now
+    //working with our scene loader. This allows the player input to be
+    //used with the Unity Engine publicly, and therefore the game play can
+    //be altered. After we commit this we will change our hard coded values above
+    //as the public void allows us to enter the numeric amounts on Unity.
+    public void OnPressHigher()
     {
-        //Checking if someone pushed a key down, and if so, write to the console
-        //GetKeyDown is for every key, and KeyCode designates which key was pressed
-        //End all Debug.Logs with a ;
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            min = guess;
-            //Now that we have created a NextGuess void function (see below) we can just
-            //call our update to utilize that function to organize our code and keep
-            //it clean and organized
-            NextGuess();
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            max = guess;
-            //Same as in the if statement
-            NextGuess();
-        }
-        else if (Input.GetKeyDown(KeyCode.Return))
-        {
-            //Can restart game
-            StartGame();
-        }
+        min = guess;
+        NextGuess();
     }
+
+    public void OnPressLower()
+    {
+        max = guess;
+        NextGuess();
+    }
+
     
     //Note that this new function is void as well (no return value) with 0 parameters
 
